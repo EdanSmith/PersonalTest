@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Pedidos</title>
+</head>
+<body>
+	<h:form>
+		<h:commandButton id="restCaller" value="Printar dados Rest"
+			action="#{pedidoBean.callRest}">
+
+			<f:ajax execute="restCaller" render="teste"></f:ajax>
+		</h:commandButton>
+		<br />
+		<h:outputLabel value="#{pedidoBean.teste}" />
+		<br />
+		<h:outputLabel id="teste" value="#{pedidoBean.testeAjax}" />
+
+		<br />
+		<fieldset>
+			<legend>SELECT</legend>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Id do Pedido" />
+				<p:inputText id="pedido_id" value="#{pedidoBean.pedidoIdSelect}" />
+				<p:commandButton id="selecter" value="Select">
+					<f:actionListener binding="#{pedidoBean.getPedido()}" />
+
+					<f:ajax execute="selecter" render="teste insert_update_panel">
+					</f:ajax>
+				</p:commandButton>
+				<h:outputText id="pedido_id_result" />
+			</h:panelGrid>
+		</fieldset>
+		<br />
+		<br />
+
+		<fieldset>
+			<legend>INSERT/UPDATE/DELETE</legend>
+			<h:panelGrid columns="2" id="insert_update_panel">
+				<h:outputLabel value="Id Pedido" />
+				<h:inputText id="pedidoId" value="#{pedidoBean.pedidoId}" />
+
+				<h:outputLabel value="Id Cliente" />
+				<h:inputText id="cliente_id" value="#{pedidoBean.clienteId}" />
+
+
+				<h:outputLabel value="Id Produto" />
+				<h:inputText id="produto_id" value="#{pedidoBean.produtoId}" />
+
+
+				<h:outputLabel value="Numero Controle" />
+				<h:inputText id="numero_controle"
+					value="#{pedidoBean.numeroControle}" />
+
+
+				<h:outputLabel value="Quantidade" />
+				<h:inputText id="quantidade" value="#{pedidoBean.quantidade}" />
+
+
+				<h:outputLabel value="Valor Total" />
+				<h:inputText id="valor_total" value="#{pedidoBean.valorTotal}" />
+
+
+				<h:outputLabel value="Nome" />
+				<h:inputText id="nome" value="#{pedidoBean.nome}" />
+
+
+				<h:commandButton id="inserter" value="insert"
+					action="#{pedidoBean.createPedido}">
+					<f:ajax execute="inserter"></f:ajax>
+				</h:commandButton>
+
+				<h:commandButton id="deleter" value="delete"
+					action="#{pedidoBean.deletePedido}">
+					<f:ajax execute="deleter"></f:ajax>
+				</h:commandButton>
+			</h:panelGrid>
+		</fieldset>
+
+	</h:form>
+</body>
+</html>

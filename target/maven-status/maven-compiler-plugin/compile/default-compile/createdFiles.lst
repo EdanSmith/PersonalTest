@@ -1,0 +1,7 @@
+br\com\resource\PedidoResource.class
+br\com\dao\PedidoDAO.class
+br\com\resource\ApplicationResource.class
+br\com\bean\RecepcaoBean.class
+br\com\bean\PedidoBean.class
+br\com\model\Pedido.class
+br\com\controller\ServletController.class
